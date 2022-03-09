@@ -15,6 +15,7 @@ export default NextAuth({
     }),
     // ...add more providers here
   ],
+    secret: process.env.NEXTAUTH_SECRET,
   pages: {
     signIn: "/auth/signin",
   },
@@ -31,6 +32,6 @@ export default NextAuth({
       }
       return token;
     },
-    secret: process.env.NEXTAUTH_SECRET,
+  
   },
 });
