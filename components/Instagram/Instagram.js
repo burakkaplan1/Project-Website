@@ -14,21 +14,23 @@ import {
   doc,
   onSnapshot,
   query,
-  setDoc,
   where,
 } from "firebase/firestore";
 import { async } from "@firebase/util";
+
 const Instagram = () => {
   const { data: session } = useSession();
   const [users, setUsers] = useState([]);
-  useEffect(async () => {
+  useEffect(() => {
     onSnapshot(
       query(collection(db, "Users"), where("uid", "==", session.user.uid)),
       (snapshot) => setUsers(snapshot.docs)
     );
+  }, [db, session]);
 
+  useEffect(async () => {
     if (users.map((user) => user.id == session.user.uid).includes(true)) {
-      return null;
+      return console.log(users.map((user) => user.id));
     } else {
       await addDoc(doc(db, "Users", session.user.uid), {
         name: session.user.name,
