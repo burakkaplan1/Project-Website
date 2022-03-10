@@ -45,7 +45,7 @@ const Instagram = () => {
     <div className="dark:bg-gray-900">
       <HeaderInsta />
 
-      <div className="grid lg:grid-cols-5 lg:space-x-5 justify-evenly pt-10 mx-auto w-[70%]">
+      <div className="grid lg:grid-cols-5 lg:space-x-5 justify-evenly pt-10 mx-auto w-[95%] sm:w-[70%]">
         <div className="lg:col-span-3 h-[100vh] overflow-y-scroll">
           <Stories />
           <Posts />

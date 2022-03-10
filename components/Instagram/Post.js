@@ -23,7 +23,7 @@ import {
   getDoc,
 } from "firebase/firestore";
 import { db } from "../../firebase";
-import { useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 const Post = (props) => {
   const { data: session } = useSession();
@@ -87,22 +87,26 @@ const Post = (props) => {
 
   const handleLike = async (e) => {
     e.preventDefault();
-    if (hasLiked) {
-      await deleteDoc(
-        doc(db, "Instagram", `${props.id}`, "Likes", session?.user?.uid)
-      );
+    if (session) {
+      if (hasLiked) {
+        await deleteDoc(
+          doc(db, "Instagram", `${props.id}`, "Likes", session?.user?.uid)
+        );
+      } else {
+        await setDoc(
+          doc(db, "Instagram", `${props.id}`, "Likes", session.user.uid),
+          {
+            username: session.user.username,
+            uid: session.user.uid,
+            timestamp: serverTimestamp(),
+            userImage: session.user.image,
+            name: session.user.name,
+            email: session.user.email,
+          }
+        );
+      }
     } else {
-      await setDoc(
-        doc(db, "Instagram", `${props.id}`, "Likes", session.user.uid),
-        {
-          username: session.user.username,
-          uid: session.user.uid,
-          timestamp: serverTimestamp(),
-          userImage: session.user.image,
-          name: session.user.name,
-          email: session.user.email,
-        }
-      );
+      Router.push("/auth/signin");
     }
   };
 
@@ -148,14 +152,19 @@ const Post = (props) => {
         <div className="border-b border-gray-300 pb-2">
           <div className="flex flex-row items-center justify-between">
             <div className="flex items-center space-x-2">
-              <HeartIcon
+              <button
+                disabled={session == null}
                 onClick={handleLike}
-                className={`w-7 h-7 cursor-pointer  ${
-                  hasLiked === true
-                    ? "text-red-500 fill-red-500"
-                    : "text-gray-700 dark:text-white "
-                }`}
-              />
+                className="disabled:text-gray-300"
+              >
+                <HeartIcon
+                  className={`w-7 h-7 cursor-pointer text-gray-300 ${
+                    hasLiked === true
+                      ? "text-red-500 fill-red-500"
+                      : "text-gray-700 dark:text-white "
+                  }`}
+                />
+              </button>
               <ChatIcon className="text-gray-700 w-7 h-7 cursor-pointer dark:text-white" />
               <PaperAirplaneIcon className="text-gray-700 w-7 h-7 cursor-pointer dark:text-white" />
             </div>
