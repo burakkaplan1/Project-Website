@@ -153,9 +153,7 @@ const Post = (props) => {
           <div className="flex flex-row items-center justify-between">
             <div className="flex items-center space-x-2">
               <button
-                disabled={session == null}
                 onClick={handleLike}
-                className="disabled:text-gray-300"
               >
                 <HeartIcon
                   className={`w-7 h-7 cursor-pointer text-gray-300 ${
