@@ -30,7 +30,7 @@ const Instagram = () => {
     if (users.map((user) => user.id == session?.user?.uid).includes(true)) {
       return console.log(users.map((user) => user.id));
     } else {
-      await setDoc(doc(db, "Users", `${session?.user?.uid}`), {
+      await setDoc(doc(db, "Users", session.user.uid), {
         name: session.user.name,
         Username: session.user.username,
         image: session.user.image,
@@ -42,7 +42,7 @@ const Instagram = () => {
   return (
     <div className="dark:bg-gray-900">
       <HeaderInsta />
-
+      <p>{session && session.user.uid}</p>
       <div className="grid lg:grid-cols-5 lg:space-x-5 justify-evenly pt-10 mx-auto w-[70%]">
         <div className="lg:col-span-3 h-[100vh] overflow-y-scroll">
           <Stories />
