@@ -126,9 +126,9 @@ const Profile = ({ UserProps }) => {
               />
             ))
         ) : (
-          <div className="col-span-1 md:col-span-2 lg:col-span-3 flex justify-center">
-            <div className="w-40 h-40 rounded-full bg-gray-300 flex items-center justify-center">
-              <FaRegImage className="w-24 h-24 text-gray-600" />
+          <div className="col-span-1 md:col-span-2 lg:col-span-3 flex items-center justify-center flex-col space-y-4 ">
+            <div className="w-40 h-40 rounded-full bg-gray-200 flex items-center justify-center">
+              <FaRegImage className="w-24 h-24 text-gray-500" />
             </div>
             <h2 className="text-3xl text-gray-700">No post yet</h2>
           </div>
