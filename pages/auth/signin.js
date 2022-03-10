@@ -14,45 +14,29 @@ function signin({ providers }) {
         <div className="mt-10 border flex flex-col items-center justify-between pt-4 px-3 rounded-tr-lg">
           <p> This is a personal projects site!</p>
           <div className="mt-20 flex flex-col space-y-2 mb-5">
-            {/* {Object.values(providers).map((provider) => (
-              <div key={provider.name}>
-                <button
-                  className="bg-blue-500 text-white w-full p-3 rounded-md py-2"
-                  onClick={() => signIn(provider.id, { callbackUrl: "/" })}
-                >
-                  Sign in with {provider.name}
-                </button>
-              </div>
-            ))} */}
-            <div>
-              <button
-                className="bg-blue-500 text-white w-full p-3 rounded-md py-2 flex items-center space-x-3"
-                onClick={() =>
-                  signIn(providers.facebook.id, { callbackUrl: "/" })
-                }
-              >
-                <FaFacebookF className="w-8 h-8" />
-                <span>Sign in with Facebook</span>
-              </button>
-              <button
-                className="bg-white border border-blue-200 text-blue-500 w-full p-3 rounded-md py-2 flex items-center space-x-3"
-                onClick={() =>
-                  signIn(providers.google.id, { callbackUrl: "/" })
-                }
-              >
-                <FcGoogle className="w-8 h-8" />
-                <span> Sign in with Google</span>
-              </button>
-              <button
-                className="bg-black text-white w-full p-3 rounded-md py-2 flex items-center space-x-3"
-                onClick={() =>
-                  signIn(providers.github.id, { callbackUrl: "/" })
-                }
-              >
-                <FaGithub className="w-8 h-8" />
-                <span>Sign in with GitHub</span>
-              </button>
-            </div>
+            <button
+              className="bg-blue-500 text-white w-full p-3 rounded-md py-2 flex items-center space-x-3"
+              onClick={() =>
+                signIn(providers.facebook.id, { callbackUrl: "/" })
+              }
+            >
+              <FaFacebookF className="w-6 h-6" />
+              <span>Sign in with Facebook</span>
+            </button>
+            <button
+              className="bg-white border border-blue-200 text-blue-500 w-full p-3 rounded-md py-2 flex items-center space-x-3"
+              onClick={() => signIn(providers.google.id, { callbackUrl: "/" })}
+            >
+              <FcGoogle className="w-6 h-6" />
+              <span> Sign in with Google</span>
+            </button>
+            <button
+              className="bg-black text-white w-full p-3 rounded-md py-2 flex items-center space-x-3"
+              onClick={() => signIn(providers.github.id, { callbackUrl: "/" })}
+            >
+              <FaGithub className="w-6 h-6" />
+              <span>Sign in with GitHub</span>
+            </button>
           </div>
         </div>
       </div>
