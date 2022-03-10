@@ -14,9 +14,8 @@ import {
   doc,
   onSnapshot,
   query,
-  where,
+  setDoc,
 } from "firebase/firestore";
-import { async } from "@firebase/util";
 
 const Instagram = () => {
   const { data: session } = useSession();
