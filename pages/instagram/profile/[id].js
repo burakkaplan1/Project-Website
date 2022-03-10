@@ -126,11 +126,11 @@ const Profile = ({ UserProps }) => {
               />
             ))
         ) : (
-          <div>
-            <div className="w-40 h-40 rounded-full bg-gray-300">
-              <FaRegImage className="w-32 h-32 text-gray-700" />
-              <h2 className="text-xl text-gray-800">No post yet</h2>
+          <div className="col-span-1 md:col-span-2 lg:col-span-3 flex justify-center">
+            <div className="w-40 h-40 rounded-full bg-gray-300 flex items-center justify-center">
+              <FaRegImage className="w-24 h-24 text-gray-600" />
             </div>
+            <h2 className="text-3xl text-gray-700">No post yet</h2>
           </div>
         )}
       </div>
