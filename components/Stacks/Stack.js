@@ -15,7 +15,7 @@ const Stack = () => {
         />
         <div className="hidden lg:inline-block "></div>
         <svg
-          className="brightness-0 dark:invert"
+          className="brightness-0 dark:invert w-40 h-40 "
           id="Layer_1"
           data-name="Layer 1"
           xmlns="http://www.w3.org/2000/svg"

@@ -26,24 +26,20 @@ const Instagram = () => {
     );
   }, [db]);
 
-  useEffect(
-    async (e) => {
-      e.preventDefault();
-      if (session) {
-        if (users.map((user) => user.id == session.user.uid).includes(true)) {
-          return console.log(users.map((user) => user.id));
-        } else {
-          await setDoc(doc(db, "Users", session.user.uid), {
-            name: session.user.name,
-            Username: session.user.username,
-            image: session.user.image,
-            uid: session.user.uid,
-          });
-        }
+  useEffect(async () => {
+    if (session) {
+      if (users.map((user) => user.id == session.user.uid).includes(true)) {
+        return console.log(users.map((user) => user.id));
+      } else {
+        await setDoc(doc(db, "Users", session.user.uid), {
+          name: session.user.name,
+          Username: session.user.username,
+          image: session.user.image,
+          uid: session.user.uid,
+        });
       }
-    },
-    [db, session]
-  );
+    }
+  }, [db, session]);
 
   return (
     <div className="dark:bg-gray-900">
