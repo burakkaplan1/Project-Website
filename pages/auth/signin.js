@@ -13,7 +13,7 @@ function signin({ providers }) {
         <div className="mt-10 border flex flex-col items-center justify-between pt-4 px-3 rounded-tr-lg">
           <p> This is a personal projects site!</p>
           <div className="mt-20 flex flex-col space-y-2 mb-5">
-            {Object.values(providers).map((provider) => (
+            {/* {Object.values(providers).map((provider) => (
               <div key={provider.name}>
                 <button
                   className="bg-blue-500 text-white w-full p-3 rounded-md py-2"
@@ -22,7 +22,15 @@ function signin({ providers }) {
                   Sign in with {provider.name}
                 </button>
               </div>
-            ))}
+            ))} */}
+            <div>
+              <button
+                className="bg-blue-500 text-white w-full p-3 rounded-md py-2"
+                onClick={() => signIn(providers[0].id, { callbackUrl: "/" })}
+              >
+                Sign in with Facebook
+              </button>
+            </div>
           </div>
         </div>
       </div>
