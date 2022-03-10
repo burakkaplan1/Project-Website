@@ -18,6 +18,7 @@ import { useSession } from "next-auth/react";
 import FollowersModal from "../../../components/Instagram/Profile/FollowersModal";
 import FollowingModal from "../../../components/Instagram/Profile/FollowingModal";
 import ProfileEditModal from "../../../components/Instagram/Profile/ProfileEditModal";
+import { FaRegImage } from "react-icons/fa";
 
 const Profile = ({ UserProps }) => {
   const User = JSON.parse(UserProps);
