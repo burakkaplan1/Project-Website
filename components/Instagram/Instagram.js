@@ -31,7 +31,7 @@ const Instagram = () => {
     if (users.map((user) => user.id == session?.user?.uid).includes(true)) {
       return console.log(users.map((user) => user.id));
     } else {
-      await addDoc(doc(db, "Users", `${session.user.uid}`), {
+      await setDoc(doc(db, "Users", `${session?.user?.uid}`), {
         name: session.user.name,
         Username: session.user.username,
         image: session.user.image,
