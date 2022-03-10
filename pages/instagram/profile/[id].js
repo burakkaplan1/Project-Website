@@ -111,18 +111,27 @@ const Profile = ({ UserProps }) => {
           .includes(true)}
       />
       <div className="grid gap-x-8 gap-y-8 justify-evenly md:grid-cols-2 lg:grid-cols-3 mx-[5%] lg:mx-[15%] mt-10">
-        {posts
-          .sort((a, b) => b.data().PostingDate - a.data().PostingDate)
-          .map((post) => (
-            <ProfilePostCard
-              key={post.id}
-              id={post.id}
-              image={post.data().ImageURL}
-              description={post.data().description}
-              comment={10}
-              likes={4}
-            />
-          ))}
+        {posts.length > 0 ? (
+          posts
+            .sort((a, b) => b.data().PostingDate - a.data().PostingDate)
+            .map((post) => (
+              <ProfilePostCard
+                key={post.id}
+                id={post.id}
+                image={post.data().ImageURL}
+                description={post.data().description}
+                comment={10}
+                likes={4}
+              />
+            ))
+        ) : (
+          <div>
+            <div className="w-40 h-40 rounded-full bg-gray-300">
+              <FaRegImage className="w-32 h-32 text-gray-700" />
+              <h2 className="text-xl text-gray-800">No post yet</h2>
+            </div>
+          </div>
+        )}
       </div>
 
       <FollowersModal id={id} />

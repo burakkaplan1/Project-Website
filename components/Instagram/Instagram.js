@@ -28,7 +28,7 @@ const Instagram = () => {
 
   useEffect(async () => {
     if (session) {
-      if (users.map((user) => user.id == session.user.uid).includes(true)) {
+      if (users.map((user) => user.id).includes(session.user.uid)) {
         return console.log(users.map((user) => user.id));
       } else {
         await setDoc(doc(db, "Users", session.user.uid), {
