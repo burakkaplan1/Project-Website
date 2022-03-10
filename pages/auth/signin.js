@@ -26,9 +26,27 @@ function signin({ providers }) {
             <div>
               <button
                 className="bg-blue-500 text-white w-full p-3 rounded-md py-2"
-                onClick={() => signIn(providers[0].id, { callbackUrl: "/" })}
+                onClick={() =>
+                  signIn(providers.facebook.id, { callbackUrl: "/" })
+                }
               >
                 Sign in with Facebook
+              </button>
+              <button
+                className="bg-white text-blue-500 w-full p-3 rounded-md py-2"
+                onClick={() =>
+                  signIn(providers.google.id, { callbackUrl: "/" })
+                }
+              >
+                Sign in with Google
+              </button>
+              <button
+                className="bg-black text-white w-full p-3 rounded-md py-2"
+                onClick={() =>
+                  signIn(providers.github.id, { callbackUrl: "/" })
+                }
+              >
+                Sign in with GitHub
               </button>
             </div>
           </div>
