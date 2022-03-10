@@ -28,7 +28,7 @@ const Instagram = () => {
     );
 
     if (users.map((user) => user.id == session.user.uid).includes(true)) {
-      return;
+      return null;
     } else {
       await addDoc(doc(db, "Users", session.user.uid), {
         name: session.user.name,
@@ -37,7 +37,7 @@ const Instagram = () => {
         uid: session.user.uid,
       });
     }
-  }, [db]);
+  }, [db, session]);
 
   return (
     <div className="dark:bg-gray-900">
