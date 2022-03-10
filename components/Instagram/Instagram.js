@@ -22,14 +22,13 @@ const Instagram = () => {
   const { data: session } = useSession();
   const [users, setUsers] = useState([]);
   useEffect(() => {
-    onSnapshot(
-      query(collection(db, "Users"), where("uid", "==", session.user.uid)),
-      (snapshot) => setUsers(snapshot.docs)
+    onSnapshot(query(collection(db, "Users")), (snapshot) =>
+      setUsers(snapshot.docs)
     );
-  }, [db, session]);
+  }, [db]);
 
   useEffect(async () => {
-    if (users.map((user) => user.id == session.user.uid).includes(true)) {
+    if (users.map((user) => user.id == session?.user?.uid).includes(true)) {
       return console.log(users.map((user) => user.id));
     } else {
       await addDoc(doc(db, "Users", `${session.user.uid}`), {
