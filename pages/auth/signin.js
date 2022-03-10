@@ -1,8 +1,9 @@
 import { getProviders, signIn } from "next-auth/react";
 import Header from "../../components/header/Header";
+import { FcGoogle } from "react-icons/fc";
+import { FaFacebookF, FaGithub } from "react-icons/fa";
 // Web page
 function signin({ providers }) {
-  console.log(providers);
   return (
     <>
       <Header />
@@ -25,28 +26,31 @@ function signin({ providers }) {
             ))} */}
             <div>
               <button
-                className="bg-blue-500 text-white w-full p-3 rounded-md py-2"
+                className="bg-blue-500 text-white w-full p-3 rounded-md py-2 flex items-center space-x-3"
                 onClick={() =>
                   signIn(providers.facebook.id, { callbackUrl: "/" })
                 }
               >
-                Sign in with Facebook
+                <FaFacebookF className="w-8 h-8" />
+                <span>Sign in with Facebook</span>
               </button>
               <button
-                className="bg-white text-blue-500 w-full p-3 rounded-md py-2"
+                className="bg-white border border-blue-200 text-blue-500 w-full p-3 rounded-md py-2 flex items-center space-x-3"
                 onClick={() =>
                   signIn(providers.google.id, { callbackUrl: "/" })
                 }
               >
-                Sign in with Google
+                <FcGoogle className="w-8 h-8" />
+                <span> Sign in with Google</span>
               </button>
               <button
-                className="bg-black text-white w-full p-3 rounded-md py-2"
+                className="bg-black text-white w-full p-3 rounded-md py-2 flex items-center space-x-3"
                 onClick={() =>
                   signIn(providers.github.id, { callbackUrl: "/" })
                 }
               >
-                Sign in with GitHub
+                <FaGithub className="w-8 h-8" />
+                <span>Sign in with GitHub</span>
               </button>
             </div>
           </div>
