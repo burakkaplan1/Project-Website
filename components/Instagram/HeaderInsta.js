@@ -32,7 +32,7 @@ const HeaderInsta = () => {
 
   useEffect(() => {
     console.log(session);
-  }, []);
+  }, [session]);
   return (
     <div className="relative dark:bg-gray-900 h-16 w-full flex items-center justify-between px-10 lg:px-[15%] shadow-lg dark:border-t dark:border-white">
       <Image

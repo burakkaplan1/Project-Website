@@ -1,9 +1,8 @@
 import { getProviders, signIn } from "next-auth/react";
 import Header from "../../components/header/Header";
-import { FcGoogle } from "react-icons/fc";
-import { FaFacebookF, FaGithub } from "react-icons/fa";
 // Web page
 function signin({ providers }) {
+  console.log(providers);
   return (
     <>
       <Header />
@@ -14,29 +13,16 @@ function signin({ providers }) {
         <div className="mt-10 border flex flex-col items-center justify-between pt-4 px-3 rounded-tr-lg">
           <p> This is a personal projects site!</p>
           <div className="mt-20 flex flex-col space-y-2 mb-5">
-            <button
-              className="bg-blue-500 text-white w-full p-3 rounded-md py-2 flex items-center space-x-3"
-              onClick={() =>
-                signIn(providers.facebook.id, { callbackUrl: "/" })
-              }
-            >
-              <FaFacebookF className="w-6 h-6" />
-              <span>Sign in with Facebook</span>
-            </button>
-            <button
-              className="bg-white border border-blue-200 text-blue-500 w-full p-3 rounded-md py-2 flex items-center space-x-3"
-              onClick={() => signIn(providers.google.id, { callbackUrl: "/" })}
-            >
-              <FcGoogle className="w-6 h-6" />
-              <span> Sign in with Google</span>
-            </button>
-            <button
-              className="bg-black text-white w-full p-3 rounded-md py-2 flex items-center space-x-3"
-              onClick={() => signIn(providers.github.id, { callbackUrl: "/" })}
-            >
-              <FaGithub className="w-6 h-6" />
-              <span>Sign in with GitHub</span>
-            </button>
+            {Object.values(providers).map((provider) => (
+              <div key={provider.name}>
+                <button
+                  className="bg-blue-500 text-white w-full p-3 rounded-md py-2"
+                  onClick={() => signIn(provider.id, { callbackUrl: "/" })}
+                >
+                  Sign in with {provider.name}
+                </button>
+              </div>
+            ))}
           </div>
         </div>
       </div>

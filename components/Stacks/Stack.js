@@ -3,7 +3,7 @@ import React from "react";
 const Stack = () => {
   return (
     <div className="px-10 w-full  py-4 mx-auto  mt-10 dark:bg-black text-center border-y ">
-      <h1 className="text-3xl lg:text-6xl font-courier text-gray-700 dark:text-white mb-10 mt-4">
+      <h1 className="text-6xl font-courier text-gray-700 dark:text-white mb-10 mt-4">
         {"<>"}Stacks{"</>"}{" "}
       </h1>
       <div className="grid grid-cols-2 lg:grid-cols-7 md:grid-cols-4 items-center gap-2 justify-items-center w-full mx-auto">
@@ -11,11 +11,11 @@ const Stack = () => {
           title="React JS"
           src="react-js.svg"
           alt="React"
-          className="lg:w-40 lg:h-40 w-24 h-24  brightness-0 dark:invert"
+          className="w-40 h-40 brightness-0 dark:invert"
         />
         <div className="hidden lg:inline-block "></div>
         <svg
-          className="brightness-0 dark:invert lg:w-40 lg:h-40 w-24 h-24 "
+          className="brightness-0 dark:invert"
           id="Layer_1"
           data-name="Layer 1"
           xmlns="http://www.w3.org/2000/svg"
@@ -29,21 +29,21 @@ const Stack = () => {
           title="Firebase"
           src="google-firebase.svg"
           alt="React"
-          className="lg:w-40 lg:h-40 w-24 h-24 grayscale invert dark:invert-0 "
+          className="w-40 h-40 grayscale invert dark:invert-0 "
         />
         <div className="hidden lg:inline-block "></div>
         <img
           title="Tailwind CSS"
           src="tailwind-css.svg"
           alt="React"
-          className="lg:w-40 lg:h-40 w-24 h-24 brightness-0 dark:invert"
+          className="w-40 h-40 brightness-0 dark:invert"
         />
 
         <img
           title="Next Auth"
           src="https://camo.githubusercontent.com/7500b9cc1d0652febaab82b3a294b3898deb63bcfc23693adcc9c1236c3b9d5b/68747470733a2f2f6e6578742d617574682e6a732e6f72672f696d672f6c6f676f2f6c6f676f2d736d2e706e67"
           alt="React"
-          className="lg:w-40 lg:h-40 w-24 h-24 grayscale dark:invert"
+          className="w-40 h-40 grayscale dark:invert"
         />
         <div className="hidden lg:inline-block "></div>
 
@@ -51,21 +51,21 @@ const Stack = () => {
           title="Headless UI"
           src="https://bestofjs.org/logos/headlessui.dark.svg"
           alt="React"
-          className="lg:w-40 lg:h-40 w-24 h-24 text-white brightness-0 dark:invert"
+          className="w-40 h-40 text-white brightness-0 dark:invert"
         />
         <div className="hidden lg:inline-block "></div>
         <img
           title="Recoil JS"
           src="Recoil.svg"
           alt="React"
-          className="lg:w-40 lg:h-40 w-24 h-24 brightness-0 dark:invert   "
+          className="w-40 h-40 brightness-0 dark:invert   "
         />
         <div className="hidden lg:inline-block "></div>
         <img
           title="NPM Packages"
           src="https://raw.githubusercontent.com/file-icons/icons/e6e6e6ac8cb1d91867167c228c00a667f4d47101/svg/NPM-Old.svg"
           alt="React"
-          className="lg:w-40 lg:h-40 w-24 h-24 dark:invert"
+          className="w-40 h-40 dark:invert"
         />
       </div>
     </div>

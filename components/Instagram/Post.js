@@ -23,7 +23,7 @@ import {
   getDoc,
 } from "firebase/firestore";
 import { db } from "../../firebase";
-import { signIn, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 const Post = (props) => {
   const { data: session } = useSession();
@@ -152,13 +152,9 @@ const Post = (props) => {
         <div className="border-b border-gray-300 pb-2">
           <div className="flex flex-row items-center justify-between">
             <div className="flex items-center space-x-2">
-              <button
-                disabled={session == null}
-                onClick={handleLike}
-                className="disabled:text-gray-300"
-              >
+              <button onClick={handleLike}>
                 <HeartIcon
-                  className={`w-7 h-7 cursor-pointer text-gray-300 ${
+                  className={`w-7 h-7 cursor-pointer  ${
                     hasLiked === true
                       ? "text-red-500 fill-red-500"
                       : "text-gray-700 dark:text-white "

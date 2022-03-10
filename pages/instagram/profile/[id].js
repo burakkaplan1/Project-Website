@@ -18,7 +18,6 @@ import { useSession } from "next-auth/react";
 import FollowersModal from "../../../components/Instagram/Profile/FollowersModal";
 import FollowingModal from "../../../components/Instagram/Profile/FollowingModal";
 import ProfileEditModal from "../../../components/Instagram/Profile/ProfileEditModal";
-import { FaRegImage } from "react-icons/fa";
 
 const Profile = ({ UserProps }) => {
   const User = JSON.parse(UserProps);
@@ -112,27 +111,18 @@ const Profile = ({ UserProps }) => {
           .includes(true)}
       />
       <div className="grid gap-x-8 gap-y-8 justify-evenly md:grid-cols-2 lg:grid-cols-3 mx-[5%] lg:mx-[15%] mt-10">
-        {posts.length > 0 ? (
-          posts
-            .sort((a, b) => b.data().PostingDate - a.data().PostingDate)
-            .map((post) => (
-              <ProfilePostCard
-                key={post.id}
-                id={post.id}
-                image={post.data().ImageURL}
-                description={post.data().description}
-                comment={10}
-                likes={4}
-              />
-            ))
-        ) : (
-          <div className="col-span-1 md:col-span-2 lg:col-span-3 flex items-center justify-center flex-col space-y-4 ">
-            <div className="w-40 h-40 rounded-full bg-gray-200 flex items-center justify-center">
-              <FaRegImage className="w-24 h-24 text-gray-500" />
-            </div>
-            <h2 className="text-3xl text-gray-700">No post yet</h2>
-          </div>
-        )}
+        {posts
+          .sort((a, b) => b.data().PostingDate - a.data().PostingDate)
+          .map((post) => (
+            <ProfilePostCard
+              key={post.id}
+              id={post.id}
+              image={post.data().ImageURL}
+              description={post.data().description}
+              comment={10}
+              likes={4}
+            />
+          ))}
       </div>
 
       <FollowersModal id={id} />
