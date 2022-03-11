@@ -126,9 +126,9 @@ const Profile = ({ UserProps }) => {
               />
             ))
         ) : (
-          <div className="md:col-span-2 lg:col-span-3 flex flex-col space-y-3">
-            <div className="flex items-center justify-center bg-gray-200 rounded-full w-40 h-40 ">
-              <GrGallery className="w-24 h-24 text-gray-700" />
+          <div className="md:col-span-2 lg:col-span-3 flex flex-col items-center justify-center space-y-3">
+            <div className="flex items-center justify-center bg-gray-200 dark:bg-gray-700 rounded-full w-40 h-40 ">
+              <GrGallery className="w-24 h-24 text-gray-700 dark:text-gray-200" />
             </div>
             <h1>No post yet!</h1>
           </div>
