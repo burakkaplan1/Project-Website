@@ -130,7 +130,7 @@ const Profile = ({ UserProps }) => {
             <div className="flex items-center justify-center bg-gray-200 dark:bg-gray-700 rounded-full w-40 h-40 ">
               <GrGallery className="w-24 h-24 text-gray-700 dark:text-gray-200" />
             </div>
-            <h1>No post yet!</h1>
+            <h1 className="text-3xl font-semibold ">No post yet!</h1>
           </div>
         )}
       </div>
