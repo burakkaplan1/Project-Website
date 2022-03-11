@@ -10,6 +10,7 @@ import {
   deleteDoc,
   setDoc,
 } from "@firebase/firestore";
+import { GrGallery } from "react-icons/gr";
 import { db } from "../../../firebase";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -111,18 +112,27 @@ const Profile = ({ UserProps }) => {
           .includes(true)}
       />
       <div className="grid gap-x-8 gap-y-8 justify-evenly md:grid-cols-2 lg:grid-cols-3 mx-[5%] lg:mx-[15%] mt-10">
-        {posts
-          .sort((a, b) => b.data().PostingDate - a.data().PostingDate)
-          .map((post) => (
-            <ProfilePostCard
-              key={post.id}
-              id={post.id}
-              image={post.data().ImageURL}
-              description={post.data().description}
-              comment={10}
-              likes={4}
-            />
-          ))}
+        {posts.length > 0 ? (
+          posts
+            .sort((a, b) => b.data().PostingDate - a.data().PostingDate)
+            .map((post) => (
+              <ProfilePostCard
+                key={post.id}
+                id={post.id}
+                image={post.data().ImageURL}
+                description={post.data().description}
+                comment={10}
+                likes={4}
+              />
+            ))
+        ) : (
+          <div className="md:col-span-2 lg:col-span-3 flex flex-col space-y-3">
+            <div className="flex items-center justify-center bg-gray-200 rounded-full w-40 h-40 ">
+              <GrGallery className="w-24 h-24 text-gray-700" />
+            </div>
+            <h1>No post yet!</h1>
+          </div>
+        )}
       </div>
 
       <FollowersModal id={id} />
