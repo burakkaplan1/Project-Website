@@ -1,5 +1,7 @@
 import { getProviders, signIn } from "next-auth/react";
 import Header from "../../components/header/Header";
+import { FaFacebookF, FaGithub } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
 // Web page
 function signin({ providers }) {
   console.log(providers);
@@ -13,16 +15,29 @@ function signin({ providers }) {
         <div className="mt-10 border flex flex-col items-center justify-between pt-4 px-3 rounded-tr-lg">
           <p> This is a personal projects site!</p>
           <div className="mt-20 flex flex-col space-y-2 mb-5">
-            {Object.values(providers).map((provider) => (
-              <div key={provider.name}>
-                <button
-                  className="bg-blue-500 text-white w-full p-3 rounded-md py-2"
-                  onClick={() => signIn(provider.id, { callbackUrl: "/" })}
-                >
-                  Sign in with {provider.name}
-                </button>
-              </div>
-            ))}
+            <button
+              onClick={() =>
+                signIn(providers.facebook.id, { callbackURL: "/" })
+              }
+              className="bg-blue-500 text-white p-3 rounded-md py-2 flex items-center space-x-3"
+            >
+              <FaFacebookF className="w-6 h-6 text-white" />{" "}
+              <span>Sign in with Facebook </span>
+            </button>
+            <button
+              onClick={() => signIn(providers.google.id, { callbackURL: "/" })}
+              className="bg-white text-blue-500 p-3 rounded-md py-2 flex items-center space-x-3 border border-blue-200"
+            >
+              <FcGoogle className="w-6 h-6 " />{" "}
+              <span>Sign in with Google </span>
+            </button>
+            <button
+              onClick={() => signIn(providers.github.id, { callbackURL: "/" })}
+              className="bg-black text-white p-3 rounded-md py-2 flex items-center space-x-3 "
+            >
+              <FaGithub className="w-6 h-6 " />{" "}
+              <span>Sign in with GitHub </span>
+            </button>
           </div>
         </div>
       </div>

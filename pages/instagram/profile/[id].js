@@ -95,7 +95,7 @@ const Profile = ({ UserProps }) => {
   }, [db, User.uid]);
 
   return (
-    <div className="dark:bg-gray-900">
+    <div className="dark:bg-gray-900 h-[100vh]">
       <ProfileHomepage
         ProfileImage={User.image}
         Username={User.Username}
