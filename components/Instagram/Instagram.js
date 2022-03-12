@@ -7,8 +7,34 @@ import StoryModalComponent from "./StoryModalComponent";
 import Suggestions from "./Suggestions";
 import { useRecoilState } from "recoil";
 import { instagramSidebarOpen } from "../../atoms/states";
+import { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
+import { collection, onSnapshot, query, setDoc, doc } from "firebase/firestore";
+import { db } from "../../firebase";
 const Instagram = () => {
+  const { data: session } = useSession();
   const [sidebarOpen, setSidebarOpen] = useRecoilState(instagramSidebarOpen);
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    onSnapshot(query(collection(db, "Users")), (snapshot) =>
+      setUsers(snapshot.docs)
+    );
+  }, [db]);
+
+  useEffect(async () => {
+    if (session) {
+      if (users.filter((user) => user.id == session.user.uid).length == 0) {
+        await setDoc(doc(db, "Users", session?.user.uid), {
+          Username: session.user.name,
+          uid: session.user.uid,
+          name: session.user.name,
+          email: session.user.email,
+          image: session.user.image,
+        });
+      }
+    }
+  }, [users]);
   return (
     <div className="dark:bg-gray-900 ">
       <HeaderInsta />

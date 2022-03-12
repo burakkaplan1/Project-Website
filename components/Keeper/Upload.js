@@ -39,7 +39,7 @@ const Upload = (props) => {
   };
 
   return editorLoaded ? (
-    <div className="App mx-auto w-1/2 ">
+    <div className="App mx-auto w-full md:w-1/2 ">
       <div className="relative mb-4">
         <label
           className="absolute -top-6 left-3 font-sans font-semibold dark:text-white text-yellow-700"

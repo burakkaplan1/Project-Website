@@ -35,10 +35,6 @@ const SuggestionProfile = (props) => {
   }, [db, session]);
 
   useEffect(() => {
-    console.log(followings.map((following) => following.id));
-  }, []);
-
-  useEffect(() => {
     if (
       followings.map((following) => following.id == props.id).includes(true)
     ) {
