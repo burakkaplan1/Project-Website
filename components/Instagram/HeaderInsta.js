@@ -29,6 +29,7 @@ const HeaderInsta = () => {
   const [open, setOpen] = useRecoilState(uploadModalState);
   const [storyOpen, setStoryOpen] = useRecoilState(storyUploadState);
   const [sidebarOpen, setSidebarOpen] = useRecoilState(instagramSidebarOpen);
+  const [indexOfSearch, setIndexOfSearch] = useState(-1);
   const Router = useRouter();
   useEffect(() => {
     onSnapshot(query(collection(db, "Users")), (snapshot) =>
@@ -36,11 +37,30 @@ const HeaderInsta = () => {
     );
   }, [db]);
 
+  const handleProfileSearchChange = (e) => {
+    setSearch(e.target.value);
+    setIndexOfSearch(
+      parseInt(
+        users.map((user) => user.data().Username).indexOf(`${e.target.value}`)
+      )
+    );
+  };
+
+  const handleProfileSearchSubmit = (e) => {
+    e.preventDefault();
+
+    if (indexOfSearch >= 0) {
+      Router.push(`/instagram/profile/${users[indexOfSearch].data().uid}`);
+    } else {
+      alert("User is not found");
+    }
+  };
   useEffect(() => {
-    console.log(session);
-  }, [session]);
+    setSearch(search);
+    setIndexOfSearch(indexOfSearch);
+  }, [search]);
   return (
-    <div className="relative dark:bg-gray-900 h-16 w-full flex items-center justify-between px-10 lg:px-[15%] shadow-lg dark:border-t dark:border-white ">
+    <div className="relative dark:bg-gray-900 h-16 w-full flex items-center justify-between px-10 lg:px-[15%] shadow-lg dark:border-t dark:border-white z-10">
       <Image
         src={
           "https://www.instagram.com/static/images/web/mobile_nav_type_logo-2x.png/1b47f9d0e595.png"
@@ -55,11 +75,7 @@ const HeaderInsta = () => {
       <div className="hidden md:inline-flex max-w-xs  ">
         <form
           className="flex relative mt-1 p-3 rounded-md "
-          onSubmit={() =>
-            Router.push({
-              pathname: `/instagram/profile/${search}`,
-            })
-          }
+          onSubmit={handleProfileSearchSubmit}
         >
           <div className="absolute inset-y-0 pl-3 flex items-center">
             <SearchIcon className=" w-5 text-gray-500 dark:text-white" />
@@ -69,7 +85,7 @@ const HeaderInsta = () => {
             className="bg-gray-50 pl-10 py-2 block w-40 sm:text-sm border-gray-300 rounded-md focus:ring-black focus:border-black focus:w-80 transition-all ease-in-out duration-300 pointer-event-none dark:bg-gray-700 dark:placeholder:text-gray-100"
             type="text"
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={handleProfileSearchChange}
             placeholder="Search"
             list="accounts"
           />
@@ -79,7 +95,7 @@ const HeaderInsta = () => {
                 <option
                   className="bg-blue-600"
                   value={user.data().Username}
-                  onSelect={() => setSearch(user.data().uid)}
+                  onSelect={(e) => setSearch(e.target.value)}
                 />
               </span>
             ))}
