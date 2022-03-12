@@ -60,7 +60,7 @@ const Posts = () => {
               ? users
                   .filter((user) => user.data().uid == post.data().uid)
                   .map((user) => user.data().Username)
-              : post.data().username
+              : post.data().Username
           }
           Image={post.data().ImageURL}
           description={post.data().description}
