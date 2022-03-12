@@ -91,13 +91,11 @@ const HeaderInsta = () => {
           />
           <datalist id="accounts">
             {users.map((user) => (
-              <span key={user.id}>
-                <option
-                  className="bg-blue-600"
-                  value={user.data().Username}
-                  onSelect={(e) => setSearch(e.target.value)}
-                />
-              </span>
+              <option
+                key={user.id}
+                value={user.data().Username}
+                onSelect={(e) => setSearch(e.target.value)}
+              />
             ))}
           </datalist>
         </form>
@@ -137,7 +135,7 @@ const HeaderInsta = () => {
                 </div>
                 <div
                   className="flex items-center space-x-3 cursor-pointer hover:scale-105 transition duration-150 ease-in"
-                  onClick={() => setOpen(true)}
+                  onClick={() => setStoryOpen(true)}
                 >
                   <PhotographIcon className="w-6 h-6 " />
                   <span>Share a story</span>

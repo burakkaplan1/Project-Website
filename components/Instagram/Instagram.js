@@ -14,7 +14,7 @@ const Instagram = () => {
       <HeaderInsta />
 
       <div
-        className={`grid lg:grid-cols-5 lg:space-x-5 justify-evenly pt-10 mx-auto w-[70%] ${
+        className={`grid lg:grid-cols-5 lg:space-x-5 justify-evenly pt-10 mx-auto lg:w-[70%] md:w-[60%] w-[95%] ${
           sidebarOpen &&
           "blur-sm md:blur-0  transition duration-150 ease-linear"
         }`}
