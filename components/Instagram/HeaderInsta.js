@@ -8,13 +8,18 @@ import {
   PlusCircleIcon,
   SearchIcon,
 } from "@heroicons/react/outline";
+import { BiLogOut } from "react-icons/bi";
 import { getSession, signIn, signOut, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { collection, onSnapshot, query } from "firebase/firestore";
 import { db } from "../../firebase";
 import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
-import { storyUploadState, uploadModalState } from "../../atoms/states";
+import {
+  instagramSidebarOpen,
+  storyUploadState,
+  uploadModalState,
+} from "../../atoms/states";
 import { Menu } from "@headlessui/react";
 const HeaderInsta = () => {
   const { data: session, jwt } = useSession();
@@ -23,6 +28,7 @@ const HeaderInsta = () => {
   const [search, setSearch] = useState("");
   const [open, setOpen] = useRecoilState(uploadModalState);
   const [storyOpen, setStoryOpen] = useRecoilState(storyUploadState);
+  const [sidebarOpen, setSidebarOpen] = useRecoilState(instagramSidebarOpen);
   const Router = useRouter();
   useEffect(() => {
     onSnapshot(query(collection(db, "Users")), (snapshot) =>
@@ -34,7 +40,7 @@ const HeaderInsta = () => {
     console.log(session);
   }, [session]);
   return (
-    <div className="relative dark:bg-gray-900 h-16 w-full flex items-center justify-between px-10 lg:px-[15%] shadow-lg dark:border-t dark:border-white">
+    <div className="relative dark:bg-gray-900 h-16 w-full flex items-center justify-between px-10 lg:px-[15%] shadow-lg dark:border-t dark:border-white z-40">
       <Image
         src={
           "https://www.instagram.com/static/images/web/mobile_nav_type_logo-2x.png/1b47f9d0e595.png"
@@ -82,8 +88,76 @@ const HeaderInsta = () => {
       </div>
       <div className="flex items-center justify-end space-x-4">
         <HomeIcon onClick={() => Router.push("/")} className="navBtn" />
-        <MenuIcon className="h-6 w-6 md:hidden cursor-pointer" />
-        {session ? (
+        {sidebarOpen == false && session && (
+          <MenuIcon
+            className="h-6 w-6 md:hidden cursor-pointer z-50"
+            onClick={() => setSidebarOpen(!sidebarOpen)}
+          />
+        )}
+        {sidebarOpen && session && (
+          <div className="w-80 h-[100vh] md:hidden bg-gray-700 text-white absolute top-0 right-0 transition ease-in-out duration-500 flex flex-col justify-between px-4">
+            <div>
+              <div className="mt-5">
+                <MenuIcon
+                  className="h-6 w-6  md:hidden cursor-pointer z-50 "
+                  onClick={() => setSidebarOpen(!sidebarOpen)}
+                />
+              </div>
+
+              <div className="mt-10 flex flex-col space-y-4">
+                <div
+                  className="flex items-center space-x-3 cursor-pointer hover:scale-105 transition duration-150 ease-in"
+                  onClick={() => Router.push("/")}
+                >
+                  <HomeIcon className="w-6 h-6 " />
+                  <span>Go to homepage</span>
+                </div>
+                <div
+                  className="flex items-center space-x-3 cursor-pointer hover:scale-105 transition duration-150 ease-in"
+                  onClick={() => setOpen(true)}
+                >
+                  <PlusCircleIcon className="w-6 h-6 " />
+                  <span>Share a photo</span>
+                </div>
+                <div
+                  className="flex items-center space-x-3 cursor-pointer hover:scale-105 transition duration-150 ease-in"
+                  onClick={() => setOpen(true)}
+                >
+                  <PhotographIcon className="w-6 h-6 " />
+                  <span>Share a story</span>
+                </div>
+              </div>
+            </div>
+            <div className="mb-6">
+              <div
+                className="flex items-center space-x-3 cursor-pointer hover:scale-105 transition duration-150 ease-in py-4 border-b border-b-gray-300"
+                onClick={signOut}
+              >
+                <BiLogOut className="w-6 h-6 " />
+                <span>Log out</span>
+              </div>
+              <div
+                className="flex flex-row items-center space-x-3 mt-3"
+                onClick={() =>
+                  Router.push(`/instagram/profile/${session.user.uid}`)
+                }
+              >
+                <img
+                  src={session.user.image}
+                  alt={session.user.username}
+                  className="w-10 h-10 rounded-full"
+                />
+                <div className="flex flex-col ">
+                  <h2 className="text-sm font-semibold">{session.user.name}</h2>
+                  <h3 className="text-xs text-gray-300">
+                    @{session.user.username}
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+        {sidebarOpen == false && session ? (
           <>
             <BellIcon className="navBtn" />
             <div className="navBtn relative">

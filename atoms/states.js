@@ -31,3 +31,8 @@ export const StoryId = atom({
   key: "StoryId",
   default: 0,
 });
+
+export const instagramSidebarOpen = atom({
+  key: "instagramSidebarOpen",
+  default: false,
+});
