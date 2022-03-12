@@ -40,7 +40,7 @@ const HeaderInsta = () => {
     console.log(session);
   }, [session]);
   return (
-    <div className="relative dark:bg-gray-900 h-16 w-full flex items-center justify-between px-10 lg:px-[15%] shadow-lg dark:border-t dark:border-white z-40">
+    <div className="relative dark:bg-gray-900 h-16 w-full flex items-center justify-between px-10 lg:px-[15%] shadow-lg dark:border-t dark:border-white ">
       <Image
         src={
           "https://www.instagram.com/static/images/web/mobile_nav_type_logo-2x.png/1b47f9d0e595.png"
