@@ -137,7 +137,7 @@ const HeaderInsta = () => {
                 <span>Log out</span>
               </div>
               <div
-                className="flex flex-row items-center space-x-3 mt-3"
+                className="flex flex-row items-center space-x-3 mt-3 cursor-pointer"
                 onClick={() =>
                   Router.push(`/instagram/profile/${session.user.uid}`)
                 }
