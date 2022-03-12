@@ -2,5 +2,5 @@
 @tailwind components;
 @tailwind utilities;
 .navBtn {
-  @apply md:inline-flex h-4 w-4 md:h-6 md:w-6 lg:w-7 lg:h-7 cursor-pointer hover:scale-125 transition-all duration-150 ease-out text-gray-800 dark:text-white;
+  @apply md:inline-flex hidden md:h-6 md:w-6 lg:w-7 lg:h-7 cursor-pointer hover:scale-125 transition-all duration-150 ease-out text-gray-800 dark:text-white;
 }
