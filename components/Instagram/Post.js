@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   BookmarkIcon,
   ChatIcon,
@@ -6,7 +7,7 @@ import {
   PaperAirplaneIcon,
   TrashIcon,
 } from "@heroicons/react/outline";
-import Image from "next/image";
+
 import Comments from "./Comments";
 import Moment from "react-moment";
 import { useEffect, useState } from "react";
@@ -140,11 +141,12 @@ const Post = (props) => {
       </div>
 
       {/* Image*/}
-      <div>
-        <img
-          src={props.Image}
-          alt=""
-          className="w-full max-h-[30rem] object-cover"
+      <div className="relative">
+        <Image
+          src={props.image}
+          alt={props.username}
+          width={600}
+          height={600}
         />
       </div>
       {/* Comment  */}

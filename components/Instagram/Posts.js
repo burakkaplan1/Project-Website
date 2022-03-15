@@ -10,10 +10,11 @@ import {
 import { getStorage, ref, deleteObject } from "firebase/storage";
 import { db, storage } from "../../firebase";
 import { useEffect, useState } from "react";
+
 const Posts = () => {
   const [posts, setPosts] = useState([]);
   const [users, setUsers] = useState([]);
-  const [updatedUsers, setUpdatedUsers] = useState([]);
+
   useEffect(() => {
     onSnapshot(
       query(collection(db, "Instagram"), orderBy("PostingDate", "desc")),
@@ -62,7 +63,7 @@ const Posts = () => {
                   .map((user) => user.data().Username)
               : post.data().Username
           }
-          Image={post.data().ImageURL}
+          image={post.data().ImageURL}
           description={post.data().description}
           ProfilePic={
             users.map((user) => user.id).includes(post.data().uid)

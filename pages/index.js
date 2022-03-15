@@ -25,12 +25,11 @@ export default function Home() {
           rel="stylesheet"
         ></link>
       </Head>
-      <body>
-        <Header />
-        <KeeperPage />
-        <Instagram />
-        <Stack />
-      </body>
+
+      <Header />
+      <KeeperPage />
+      <Instagram />
+      <Stack />
     </div>
   );
 }

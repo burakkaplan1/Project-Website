@@ -63,7 +63,7 @@ const Stories = () => {
             id={users
               .filter((user) => user.data().uid == story.uid)
               .map((user) => user.data().uid)}
-            key={story.id}
+            key={story.uid}
             image={
               users.map((user) => user.id).includes(story.uid)
                 ? users
