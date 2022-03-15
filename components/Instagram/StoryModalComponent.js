@@ -7,6 +7,7 @@ import { collection, onSnapshot, query } from "firebase/firestore";
 import { db } from "../../firebase";
 import { ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/outline";
 import Moment from "react-moment";
+import Image from "next/image";
 
 const StoryModalComponent = (props) => {
   const [storyOpen, setStoryOpen] = useRecoilState(StoryModal);
@@ -84,7 +85,7 @@ const StoryModalComponent = (props) => {
                 </div>
               )}
 
-              <img
+              <Image
                 className="w-full h-full"
                 src={
                   stories
@@ -92,6 +93,8 @@ const StoryModalComponent = (props) => {
                     .filter((story) => story.data().uid == StoryID)
                     [currentPhoto]?.data().ImageURL
                 }
+                width={500}
+                height={500}
               />
 
               <div
